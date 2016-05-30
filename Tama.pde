@@ -1,43 +1,45 @@
 class Tama{
-  Vec position = new Vec();
-  Vec velocity = new Vec();
+  float pos_x,pos_y;
+  float vel_x,vel_y;
  
-  public Tama(Vec position, Vec velocity){
-    this.position = position;
-    this.velocity = velocity;
+  public Tama(float pos_x,float pos_y,float vel_x,float vel_y){
+    this.pos_x = pos_x;
+    this.pos_y = pos_y;
+    this.vel_x = vel_x;
+    this.vel_y = vel_y;
   } 
   
   public void reflect(){
-    if(position.x < 0)
+    if(pos_x < 0)
     {
-      position.x = - position.x;
-      velocity.x = - velocity.x;
+      pos_x = - pos_x;
+      vel_x = - vel_x;
     }
-    else if(position.x > width){
-      position.x = width - ( position.x - width );
-      velocity.x = - velocity.x;
+    else if(pos_x > width){
+      pos_x = width - ( pos_x - width );
+      vel_x = - vel_x;
     }
     
-    if(position.y < 0)
+    if(pos_y < 0)
     {
-      position.y = - position.y;
-      velocity.y = - velocity.y;
+      pos_y = - pos_y;
+      vel_y = - vel_y;
     }
-    else if(position.y > height){
-      position.y = height - ( position.y - height );
-      velocity.y = - velocity.y;
+    else if(pos_y > height){
+      pos_y = height - ( pos_y - height );
+      vel_y = - vel_y;
     }
     
   }
   
   public void move(){
     this.reflect();
-    position.add(velocity);
-    
+    pos_x += vel_x;
+    pos_y += vel_y;    
   }
   
   public void draw(){
-    ellipse(position.x, position.y , 30, 30);
+    ellipse(pos_x, pos_y , 30, 30);
   } 
 }
 

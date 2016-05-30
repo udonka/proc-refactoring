@@ -6,8 +6,11 @@ void setup(){
 
   for(int i = 0; i < 5; i++){
     Tama newtama = new Tama(
-      new Vec(width/2+random(5),height/2+random(5)), 
-      new Vec(random(5),random(5)));
+      width/2+random(5),
+      height/2+random(5),
+      random(5),
+      random(5)
+    );
       
     tamas.add(newtama);
   }
