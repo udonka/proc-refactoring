@@ -7,19 +7,19 @@ void setup(){
 
   //initialize tamas.
   for(int i = 0; i < 5; i++){
-    Tama newtama = new Tama(
-      width/2+random(5),
-      height/2+random(5),
-      random(5),
-      random(5)
-    );
-      
+    float newtama[] = new float[4];
+    
+    newtama[0] = width/2+random(5);
+    newtama[1] = height/2+random(5);
+    newtama[2] = random(5);
+    newtama[3] = random(5);
+          
     tamas.add(newtama);
   }
 }
 
 // preparation of tamas ArrayList
-ArrayList<Tama> tamas = new ArrayList<Tama>();
+ArrayList<float[]> tamas = new ArrayList<float[]>();
 
 //
 void draw(){
@@ -32,9 +32,33 @@ void draw(){
   strokeWeight(5);
 
   //draw each tamas
-  for(Tama tama : tamas){
-    tama.move();  
-    tama.draw();  
+  for(float[] tama : tamas){
+    
+    if(tama[0] < 0)
+    {
+      tama[0] = - tama[0];
+      tama[2] = - tama[2];
+    }
+    else if(tama[0] > width){
+      tama[0] = width - ( tama[0] - width );
+      tama[2] = - tama[2];
+    }
+    
+    if(tama[1] < 0)
+    {
+      tama[1] = - tama[1];
+      tama[3] = - tama[3];
+    }
+    else if(tama[1]> height){
+      tama[1] = height - ( tama[1] - height );
+      tama[3] = - tama[3];
+    }
+    
+    tama[0] += tama[2];
+    tama[1] += tama[3];    
+
+    ellipse(tama[0], tama[1] , 30, 30);
+
   }
 
 }
