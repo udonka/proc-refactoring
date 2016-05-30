@@ -1,4 +1,4 @@
-class Tama implements IDrawable{
+class Tama{
   Vec position = new Vec();
   Vec velocity = new Vec();
  
@@ -6,12 +6,8 @@ class Tama implements IDrawable{
     this.position = position;
     this.velocity = velocity;
   } 
-
-  public Tama(){
-    this.velocity = new Vec(5, 1);
-  }
   
-  public void reflect(Vec position, Vec velocity){
+  public void reflect(){
     if(position.x < 0)
     {
       position.x = - position.x;
@@ -35,14 +31,13 @@ class Tama implements IDrawable{
   }
   
   public void move(){
-    this.reflect(this.position,this.velocity);
+    this.reflect();
     position.add(velocity);
     
   }
   
   public void draw(){
     ellipse(position.x, position.y , 30, 30);
-  }
- 
+  } 
 }
 

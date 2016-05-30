@@ -8,11 +8,9 @@ void setup(){
     Tama newtama = new Tama(
       new Vec(width/2+random(5),height/2+random(5)), 
       new Vec(random(5),random(5)));
-    
-    tamas.add();
+      
+    tamas.add(newtama);
   }
-  
-  
 }
 
 ArrayList<Tama> tamas = new ArrayList<Tama>();

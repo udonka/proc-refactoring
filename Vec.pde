@@ -1,4 +1,3 @@
-
 class Vec{
   public float x;
   public float y;
