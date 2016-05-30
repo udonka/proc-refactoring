@@ -5,19 +5,19 @@ ArrayList<float[]> datas = new ArrayList<float[]>();
 void setup(){
   //set screen size
   size(300,300);
-  
+
   //set background color white
   background(255,255,255);
 
   //initialize datas.
   for(int i = 0; i < 5; i++){
     float a[] = new float[4];
-    
+
     a[0] = width/2+random(5);
     a[1] = height/2+random(5);
     a[2] = random(5);
     a[3] = random(5);
-          
+
     datas.add(a);
   }
 }
