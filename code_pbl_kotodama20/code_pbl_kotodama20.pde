@@ -26,6 +26,9 @@ void draw(){
 
   for(Tama tama : tamas){
     tama.move();  
+  }
+  
+  for(Tama tama : tamas){
     tama.draw();  
   }
 

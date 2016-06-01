@@ -1,4 +1,4 @@
-// preparation of datas ArrayList
+// preparation of tamas ArrayList
 ArrayList<float[]> datas = new ArrayList<float[]>();
 
 //called once on begining of execution.
@@ -9,7 +9,7 @@ void setup(){
   //set background color white
   background(255,255,255);
 
-  //initialize datas.
+  //initialize tamas.
   for(int i = 0; i < 5; i++){
     float a[] = new float[4];
 
@@ -33,7 +33,7 @@ void draw(){
   stroke(255,255,0);
   strokeWeight(5);
 
-  //draw each datas
+  //draw each tamas
   for(float[] data : datas){
     
     if(data[0] < 0)
@@ -63,4 +63,3 @@ void draw(){
 
   }
 }
-

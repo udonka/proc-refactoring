@@ -12,26 +12,13 @@ class Tama implements IDrawable{
   }
   
   public void reflect(Vec position, Vec velocity){
-    if(position.x < 0)
-    {
-      position.x = - position.x;
-      velocity.x = - velocity.x;
-    }
-    else if(position.x > width){
-      position.x = width - ( position.x - width );
-      velocity.x = - velocity.x;
-    }
+    float[] x_state = reflect_func(position.x, velocity.x, 0, width);
+    position.x = x_state[0]; 
+    velocity.x = x_state[1];
     
-    if(position.y < 0)
-    {
-      position.y = - position.y;
-      velocity.y = - velocity.y;
-    }
-    else if(position.y > height){
-      position.y = height - ( position.y - height );
-      velocity.y = - velocity.y;
-    }
-    
+    float[] y_state = reflect_func(position.y, velocity.y, 0, height);
+    position.y = y_state[0]; 
+    velocity.y = y_state[1];
   }
   
   public void move(){
@@ -43,6 +30,19 @@ class Tama implements IDrawable{
   public void draw(){
     ellipse(position.x, position.y , 30, 30);
   }
- 
+
+}
+
+float[] reflect_func(float pos, float vel, float min, float max){
+  if(pos < min)
+  {
+    pos = min - ( pos - min );
+    vel = - vel;
+  }
+  else if(pos > max){
+    pos = max - ( pos - max );
+    vel = - vel;
+  }
+  return new float[]{pos,vel};
 }
 

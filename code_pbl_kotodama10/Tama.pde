@@ -7,28 +7,15 @@ class Tama{
     this.pos_y = pos_y;
     this.vel_x = vel_x;
     this.vel_y = vel_y;
-  } 
+  }
+  
   
   public void reflect(){
-    if(pos_x < 0)
-    {
-      pos_x = - pos_x;
-      vel_x = - vel_x;
-    }
-    else if(pos_x > width){
-      pos_x = width - ( pos_x - width );
-      vel_x = - vel_x;
-    }
+    float[] x_state = reflect_func(pos_x,vel_x,0,width);
+    pos_x = x_state[0]; vel_x = x_state[1];
     
-    if(pos_y < 0)
-    {
-      pos_y = - pos_y;
-      vel_y = - vel_y;
-    }
-    else if(pos_y > height){
-      pos_y = height - ( pos_y - height );
-      vel_y = - vel_y;
-    }
+    float[] y_state = reflect_func(pos_y,vel_y,0,height);
+    pos_y = y_state[0]; vel_y = y_state[1];
     
   }
   
@@ -41,5 +28,18 @@ class Tama{
   public void draw(){
     ellipse(pos_x, pos_y , 30, 30);
   } 
+}
+
+public float[] reflect_func(float pos, float vel, float min, float max){
+  if(pos < min)
+  {
+    pos = min - ( pos - min );
+    vel = - vel;
+  }
+  else if(pos > max){
+    pos = max - ( pos - max );
+    vel = - vel;
+  }
+  return new float[]{pos,vel};
 }
 
