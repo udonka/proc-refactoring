@@ -1,6 +1,6 @@
-class Tama implements IDrawable{
-  Vec position = new Vec();
-  Vec velocity = new Vec();
+class Tama{
+  private Vec position = new Vec();
+  private Vec velocity = new Vec();
  
   public Tama(Vec position, Vec velocity){
     this.position = position;
@@ -12,13 +12,13 @@ class Tama implements IDrawable{
   }
   
   public void reflect(Vec position, Vec velocity){
-    float[] x_state = reflect_func(position.x, velocity.x, 0, width);
-    position.x = x_state[0]; 
-    velocity.x = x_state[1];
+    float[] pos_vel_x = reflect_func(position.x, velocity.x, 0, width);
+    position.x = pos_vel_x[0]; 
+    velocity.x = pos_vel_x[1];
     
-    float[] y_state = reflect_func(position.y, velocity.y, 0, height);
-    position.y = y_state[0]; 
-    velocity.y = y_state[1];
+    float[] pos_vel_y = reflect_func(position.y, velocity.y, 0, height);
+    position.y = pos_vel_y[0]; 
+    velocity.y = pos_vel_y[1];
   }
   
   public void move(){
@@ -45,4 +45,3 @@ float[] reflect_func(float pos, float vel, float min, float max){
   }
   return new float[]{pos,vel};
 }
-

@@ -11,11 +11,13 @@ class Tama{
   
   
   public void reflect(){
-    float[] x_state = reflect_func(pos_x,vel_x,0,width);
-    pos_x = x_state[0]; vel_x = x_state[1];
+    float[] pos_vel_x = reflect_func(pos_x,vel_x,0,width);
+    pos_x = pos_vel_x[0]; 
+    vel_x = pos_vel_x[1];
     
-    float[] y_state = reflect_func(pos_y,vel_y,0,height);
-    pos_y = y_state[0]; vel_y = y_state[1];
+    float[] pos_vel_y = reflect_func(pos_y,vel_y,0,height);
+    pos_y = pos_vel_y[0]; 
+    vel_y = pos_vel_y[1];
     
   }
   
@@ -31,15 +33,16 @@ class Tama{
 }
 
 public float[] reflect_func(float pos, float vel, float min, float max){
+  float newPos = pos;
+  float newVel = vel;
   if(pos < min)
   {
-    pos = min - ( pos - min );
-    vel = - vel;
+    newPos = min - ( pos - min );
+    newVel = - vel;
   }
   else if(pos > max){
-    pos = max - ( pos - max );
-    vel = - vel;
+    newPos = max - ( pos - max );
+    newVel = - vel;
   }
-  return new float[]{pos,vel};
+  return new float[]{newPos,newVel};
 }
-
