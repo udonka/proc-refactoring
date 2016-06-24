@@ -2,7 +2,6 @@ void setup(){
   size(300,300);
   
   background(255,255,255);
-  //!!todo ellipse mode
 
   for(int i = 0; i < 5; i++){
     Tama newtama = new Tama(
@@ -26,8 +25,10 @@ void draw(){
 
   for(Tama tama : tamas){
     tama.move();  
+  }
+  
+  for(Tama tama : tamas){
     tama.draw();  
   }
 
 }
-
